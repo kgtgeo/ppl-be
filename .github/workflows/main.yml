@@ -9,9 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: checkout
+        uses: actions/checkout@v3
         with:
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          ref: main 
+      - name: deploy
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-dev
+          sudo gem install dpl
+          sudo dpl --provider=heroku --app=ppl-be --api_key=77fcdb86-b77a-4f2e-85db-a0de460b030d
