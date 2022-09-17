@@ -23,8 +23,8 @@ async function authenticateDb(db) {
 authenticateDb(db)
 
 // Constants
-const PORT = 4040;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 4040;
+const HOST = process.env.HOST || '0.0.0.0';
 
 // App
 const app = express();
