@@ -1,0 +1,28 @@
+{
+  "name": "ppl-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgtgeo/ppl-be.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kgtgeo/ppl-be/issues"
+  },
+  "homepage": "https://github.com/kgtgeo/ppl-be#readme",
+  "dependencies": {
+    "express": "^4.16.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.22.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
