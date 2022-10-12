@@ -1,6 +1,8 @@
-const { HealtzRepository } = require('../repository/healtzRepository')
+import { HealtzRepository } from "../repository/healtzRepository"
 
-class HealtzService {
+export class HealtzService {
+    healtzRepository: HealtzRepository
+
     constructor(healtzRepository:HealtzRepository) {
         this.healtzRepository = healtzRepository
     }
@@ -9,6 +11,3 @@ class HealtzService {
         return this.healtzRepository.GetHealtzByName("sans")
     }
 }
-
-
-exports.HealtzService = HealtzService
