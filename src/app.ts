@@ -1,5 +1,5 @@
 const express = require('express')
-import { Response } from "express"
+import { Request, Response } from "express"
 import { Sequelize } from "sequelize"
 import  { HealtzHandler } from "./handler/healtz"
 import { HealtzService } from "./module/healtzService"
@@ -11,9 +11,8 @@ export function getApp(conn:Sequelize) {
     const healtzRepository = new HealtzRepository(conn)
     const healtzService = new HealtzService(healtzRepository)
     const healtzApp = new HealtzHandler(healtzService)
-    app.get('/healtz', async(req, res:Response) => {
-        const h = await healtzApp.GetCheck()
-        res.send(h)
+    app.get('/healtz', async(req:Request, res:Response) => {
+        healtzApp.GetCheck(req, res)
     })
     
     return app
