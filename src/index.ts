@@ -1,12 +1,12 @@
-import { Sequelize } from "sequelize" 
-const localConfig = require("./database/configs/prod")
-import { authenticateDb } from "./conn"
-import { getApp } from "./app"
+import { Sequelize } from "sequelize";
+const localConfig = require("./database/configs/prod");
+import { authenticateDb } from "./conn";
+import { getApp } from "./app";
 
 // db
-const config = localConfig.config
-const db:Sequelize = new Sequelize({
-  dialect: 'postgres',
+const config = localConfig.config;
+const db: Sequelize = new Sequelize({
+  dialect: "postgres",
   host: config.host,
   database: config.database,
   username: config.username,
@@ -14,17 +14,17 @@ const db:Sequelize = new Sequelize({
   port: config.port,
   sync: {
     force: false,
-    alter: false
-  }
-})
-authenticateDb(db)
+    alter: false,
+  },
+});
+authenticateDb(db);
 
 // Constants
-const PORT:string = process.env.PORT || "4040";
-const HOST:string = process.env.HOST || '0.0.0.0';
+const PORT: string = process.env.PORT || "4040";
+const HOST: string = process.env.HOST || "0.0.0.0";
 
 // App
-const handler = getApp(db)
+const handler = getApp(db);
 
 handler.listen(parseInt(PORT), HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
