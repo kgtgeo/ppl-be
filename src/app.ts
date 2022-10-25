@@ -21,9 +21,9 @@ export function getApp(conn:Sequelize) {
     //  Handler
     const healtzApp = new HealtzHandler(healtzService)
     const registrationApp = new RegistrationHandler(registrationService)
-    app.get('/healtz', async(req, res:Response) => {
-        const h = await healtzApp.GetCheck()
-        res.send(h)
+
+    app.get('/healtz', async(req:Request, res:Response) => {
+        healtzApp.GetCheck(req, res)
     })
 
     app.post('/register', async(req:Request, res:Response) => {

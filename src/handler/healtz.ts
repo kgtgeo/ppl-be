@@ -1,3 +1,4 @@
+import { Request, Response } from "express"
 import { HealtzService } from "../module/healtzService"
 
 export class HealtzHandler {
@@ -6,8 +7,9 @@ export class HealtzHandler {
     constructor(healtzService:HealtzService) {
         this.healtzService = healtzService
     }
-    async GetCheck() {
-        return await this.healtzService.check()
+    async GetCheck(req:Request, res:Response) {
+        const healthRes = await this.healtzService.check()
+        res.send(healthRes)
     }
 }
 
