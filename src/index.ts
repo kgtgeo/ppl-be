@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize" 
-const localConfig = require("./database/configs/local")
+const localConfig = require("./database/configs/prod")
 import { authenticateDb } from "./conn"
 import { getApp } from "./app"
 
@@ -20,11 +20,11 @@ const db:Sequelize = new Sequelize({
 authenticateDb(db)
 
 // Constants
-const PORT = process.env.PORT || 4040;
-const HOST = process.env.HOST || '0.0.0.0';
+const PORT:string = process.env.PORT || "4040";
+const HOST:string = process.env.HOST || '0.0.0.0';
 
 // App
 const handler = getApp(db)
 
-handler.listen(PORT, HOST);
+handler.listen(parseInt(PORT), HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
