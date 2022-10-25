@@ -28,7 +28,8 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.22.1",
     "source-map-loader": "^4.0.1",
-    "ts-loader": "^9.4.1"
+    "ts-loader": "^9.4.1",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
