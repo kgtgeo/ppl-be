@@ -1,7 +1,4 @@
 {
-    "presets": ["@babel/preset-flow"],
-    "ignore": [
-        "node_modules",
-        "build"
-    ]
+  "presets": ["@babel/preset-flow"],
+  "ignore": ["node_modules", "build"]
 }
