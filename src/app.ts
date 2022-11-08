@@ -7,6 +7,9 @@ import { HealtzService } from "./module/healtzService";
 import { HealtzRepository } from "./repository/healtzRepository";
 import { RegistrationRepository } from "./repository/registrationRepository";
 import { RegistrationService } from "./module/registrationService";
+import { SellerProductRepository } from "./repository/sellerProductRepository";
+import { ProductService } from "./module/productService";
+import { ProductHandler } from "./handler/product";
 
 export function getApp(conn: Sequelize) {
   const app: Express = express();
@@ -14,12 +17,15 @@ export function getApp(conn: Sequelize) {
   // Repository
   const healtzRepository = new HealtzRepository(conn);
   const registrationRepository = new RegistrationRepository(conn);
+  const sellerProductRepository = new SellerProductRepository(conn);
   // Module
   const registrationService = new RegistrationService(registrationRepository);
   const healtzService = new HealtzService(healtzRepository);
+  const productService = new ProductService(sellerProductRepository);
   //  Handler
   const healtzApp = new HealtzHandler(healtzService);
   const registrationApp = new RegistrationHandler(registrationService);
+  const productApp = new ProductHandler(productService)
 
   app.get("/healtz", async (req: Request, res: Response) => {
     healtzApp.GetCheck(req, res);
@@ -28,6 +34,10 @@ export function getApp(conn: Sequelize) {
   app.post("/register", async (req: Request, res: Response) => {
     registrationApp.RegisterUser(req, res);
   });
+
+  app.get("/product/list/", async(req: Request, res: Response) => {
+    productApp.GetListAllSellerProduct(req, res);
+  })
 
   return app;
 }
