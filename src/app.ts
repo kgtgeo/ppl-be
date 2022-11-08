@@ -25,7 +25,7 @@ export function getApp(conn: Sequelize) {
   //  Handler
   const healtzApp = new HealtzHandler(healtzService);
   const registrationApp = new RegistrationHandler(registrationService);
-  const productApp = new ProductHandler(productService)
+  const productApp = new ProductHandler(productService);
 
   app.get("/healtz", async (req: Request, res: Response) => {
     healtzApp.GetCheck(req, res);
@@ -35,9 +35,9 @@ export function getApp(conn: Sequelize) {
     registrationApp.RegisterUser(req, res);
   });
 
-  app.get("/product/list/", async(req: Request, res: Response) => {
+  app.get("/product/list/", async (req: Request, res: Response) => {
     productApp.GetListAllSellerProduct(req, res);
-  })
+  });
 
   return app;
 }

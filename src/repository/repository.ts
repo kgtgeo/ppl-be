@@ -24,7 +24,6 @@ export class Repository {
       }
     );
   }
-
 }
 
 exports.Repository = Repository;

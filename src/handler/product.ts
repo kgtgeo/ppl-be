@@ -9,7 +9,8 @@ export class ProductHandler {
   }
 
   async GetListAllSellerProduct(req: Request, res: Response) {
-    const sellerProductRes = await this.productService.GetListAllSellerProduct();
+    const sellerProductRes =
+      await this.productService.GetListAllSellerProduct();
     res.send(sellerProductRes);
   }
 }

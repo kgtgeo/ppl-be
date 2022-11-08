@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes, Model, ModelCtor } from "sequelize";
 
-const emptyStock = 0
+const emptyStock = 0;
 
 export class SellerProductRepository {
   conn: Sequelize;
@@ -17,14 +17,14 @@ export class SellerProductRepository {
           autoIncrement: true,
         },
         product_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-          },
-          user_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-          },
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+        },
+        user_id: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
         name: {
           type: DataTypes.STRING,
         },
@@ -54,7 +54,7 @@ export class SellerProductRepository {
         },
         stock: {
           type: DataTypes.INTEGER,
-          defaultValue: emptyStock
+          defaultValue: emptyStock,
         },
         image_url: {
           type: DataTypes.CHAR,
@@ -68,11 +68,10 @@ export class SellerProductRepository {
 
   async GetListAllSellerProduct() {
     const sellerProducts: Model[] = await this.sellerProduct.findAll({
-        limit: 100,
-    })
-    return sellerProducts
+      limit: 100,
+    });
+    return sellerProducts;
   }
-
 }
 
 exports.SellerProductRepository = SellerProductRepository;

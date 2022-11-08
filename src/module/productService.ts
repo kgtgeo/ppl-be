@@ -7,7 +7,7 @@ export class ProductService {
     this.sellerProductRepository = sellerProductRepository;
   }
 
-  GetListAllSellerProduct(){
+  GetListAllSellerProduct() {
     return this.sellerProductRepository.GetListAllSellerProduct();
   }
 }

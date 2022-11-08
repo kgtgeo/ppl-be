@@ -3,7 +3,7 @@ import { Repository } from "./repository";
 
 export class HealtzRepository extends Repository {
   constructor(conn: Sequelize) {
-    super(conn)
+    super(conn);
   }
 
   async GetHealtzByName(name) {
