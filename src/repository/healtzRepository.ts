@@ -1,28 +1,9 @@
 import { Sequelize, DataTypes, Model, ModelCtor } from "sequelize";
+import { Repository } from "./repository";
 
-export class HealtzRepository {
-  conn: Sequelize;
-  healtz: ModelCtor<Model<any, any>>;
-
+export class HealtzRepository extends Repository {
   constructor(conn: Sequelize) {
-    this.conn = conn;
-    this.healtz = conn.define(
-      "healtz",
-      {
-        id: {
-          type: DataTypes.BIGINT,
-          primaryKey: true,
-          autoIncrement: true,
-        },
-        name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-      },
-      {
-        freezeTableName: true,
-      }
-    );
+    super(conn);
   }
 
   async GetHealtzByName(name) {
