@@ -18,12 +18,18 @@ export class ProductService {
     price: string;
     stock: number;
   }) {
-    if (sellerProduct.user_id === "" || sellerProduct.user_id === undefined || sellerProduct.name === "" || sellerProduct.name === undefined){
+    if (
+      sellerProduct.user_id === "" ||
+      sellerProduct.user_id === undefined ||
+      sellerProduct.name === "" ||
+      sellerProduct.name === undefined
+    ) {
       throw Error("bad request");
     }
-    return await this.sellerProductRepository.CreateSellerProduct(sellerProduct)
-    .catch((err: Error) => {
-      throw err;
-    });
+    return await this.sellerProductRepository
+      .CreateSellerProduct(sellerProduct)
+      .catch((err: Error) => {
+        throw err;
+      });
   }
 }

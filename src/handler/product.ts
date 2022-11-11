@@ -16,21 +16,23 @@ export class ProductHandler {
 
   async CreateSellerProduct(req: Request, res: Response) {
     const body = req.body;
-    await this.productService.CreateSellerProduct({
-      user_id: body.user_id,
-      name: body.name,
-      description: body.description,
-      price: body.price,
-      stock: body.stock
-    }).then(
-      () => {
-        res.sendStatus(200);
-      },
-      (err) => {
-        console.log(err)
-        res.sendStatus(400);
-      }
-    );
+    await this.productService
+      .CreateSellerProduct({
+        user_id: body.user_id,
+        name: body.name,
+        description: body.description,
+        price: body.price,
+        stock: body.stock,
+      })
+      .then(
+        () => {
+          res.sendStatus(200);
+        },
+        (err) => {
+          console.log(err);
+          res.sendStatus(400);
+        }
+      );
   }
 }
 
