@@ -7,7 +7,23 @@ export class ProductService {
     this.sellerProductRepository = sellerProductRepository;
   }
 
-  GetListAllSellerProduct() {
-    return this.sellerProductRepository.GetListAllSellerProduct();
+  async GetListAllSellerProduct() {
+    return await this.sellerProductRepository.GetListAllSellerProduct();
+  }
+
+  async CreateSellerProduct(sellerProduct: {
+    user_id: string;
+    name: string;
+    description: string;
+    price: string;
+    stock: number;
+  }) {
+    if (sellerProduct.user_id === "" || sellerProduct.user_id === undefined || sellerProduct.name === "" || sellerProduct.name === undefined){
+      throw Error("bad request");
+    }
+    return await this.sellerProductRepository.CreateSellerProduct(sellerProduct)
+    .catch((err: Error) => {
+      throw err;
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes, Model, ModelCtor } from "sequelize";
-import { Repository } from "./repository";
+import { Repository } from "./base/repository";
 
 export class HealtzRepository extends Repository {
   constructor(conn: Sequelize) {

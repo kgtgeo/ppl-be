@@ -39,6 +39,10 @@ export function getApp(conn: Sequelize) {
     productApp.GetListAllSellerProduct(req, res);
   });
 
+  app.post("/product", async(req: Request, res: Response) => {
+    productApp.CreateSellerProduct(req, res);
+  })
+
   return app;
 }
 
