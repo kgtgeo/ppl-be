@@ -1,6 +1,8 @@
 import { Sequelize, DataTypes, Model, ModelCtor } from "sequelize";
+const uniqid = require("uniqid");
 
 const emptyStock = 0;
+const productSerial = "PRODUCT-";
 
 export class SellerProductRepository {
   conn: Sequelize;
@@ -71,6 +73,27 @@ export class SellerProductRepository {
       limit: 100,
     });
     return sellerProducts;
+  }
+
+  async CreateSellerProduct(sellerProduct: {
+    user_id: string;
+    name: string;
+    description: string;
+    price: string;
+    stock: number;
+  }) {
+    const productId = await this.sellerProduct
+      .create({
+        product_id: `${productSerial}${uniqid()}`,
+        user_id: sellerProduct.user_id,
+        name: sellerProduct.name,
+        description: sellerProduct.description,
+        price: sellerProduct.price,
+        stock: sellerProduct.stock,
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 }
 
