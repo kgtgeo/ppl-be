@@ -25,4 +25,4 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: ppl-be # the name of the project on Deno Deploy
-          entrypoint: ./dist/index.js # the entrypoint to deploy
+          entrypoint: ../dist/index.js # the entrypoint to deploy
