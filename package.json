@@ -1,9 +1,9 @@
 {
   "name": "ppl-be",
-  "type": "module",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc --build",
     "start": "npm run build && node dist/index.js",

@@ -1,29 +1,21 @@
-name: Deploy
+name: Heroku Deploy
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
-    permissions:
-      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
-      contents: read
-
     steps:
-      - name: Clone repository
+      - name: checkout
         uses: actions/checkout@v3
-      
-      - name: Build
-        uses: actions/setup-node@v1
-       
-      - run: | 
-          npm install
-          npm run build
-          ls -a .
-
-      - name: Deploy to Deno Deploy
-        uses: denoland/deployctl@v1
         with:
-          project: ppl-be # the name of the project on Deno Deploy
-          entrypoint: dist/index.js # the entrypoint to deploy
+          ref: main
+      - name: deploy
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-dev
+          sudo gem install dpl
+          sudo dpl --provider=heroku --app=ppl-be --api_key=77fcdb86-b77a-4f2e-85db-a0de460b030d
